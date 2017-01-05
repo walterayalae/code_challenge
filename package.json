@@ -1,0 +1,23 @@
+{
+  "name": "code_challenge",
+  "version": "1.0.0",
+  "description": "\"home movie collection\"",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/walterayalae/code_challenge.git"
+  },
+  "keywords": [
+    "code",
+    "challenge"
+  ],
+  "author": "walter ayala",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/walterayalae/code_challenge/issues"
+  },
+  "homepage": "https://github.com/walterayalae/code_challenge#readme"
+}
