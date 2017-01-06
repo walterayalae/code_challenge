@@ -1,6 +1,7 @@
 import React from 'react';
 import TextField from 'material-ui/TextField';
-import RaisedButton from 'material-ui/RaisedButton';
+import DropDownMenu from 'material-ui/DropDownMenu';
+import MenuItem from 'material-ui/MenuItem';
 
 
 
@@ -10,7 +11,8 @@ export default class SearchBar extends React.Component {
 constructor(props){
  super(props);
   this.state = {
-    searchValue:''
+    searchValue:'',
+    value: 1
   };
 
 }
@@ -23,12 +25,27 @@ handleSearchValue (e) {
 
 }
 
+handleSearch () {
 
-render() {
-    
+  const searchVal = this.state.searchValue;
+  this.props.handleSearch(searchVal);
+
+}
+
+handleChange(event, index, value){
+console.log(value)
+
+this.setState({
+  value
+})
+
+}
+
+render () {
+
  const style = {
       searchBar: {
-        width: '40%',
+        width: '60%',
         flex: '50%',
         marginLeft: 'auto',
         marginRight: 'auto',
@@ -48,8 +65,12 @@ render() {
       },
     button: {
       margin: 12
-      }
+      },
+    customWidth: {
+      width: 180
   }
+
+  };
 
  return (
     <div style={style.searchBar}>
@@ -58,12 +79,18 @@ render() {
       style={{width: '78%', marginRight: '2%' }}
       onChange={e => this.handleSearchValue(e)}
     />
-    <RaisedButton 
-      label="Search" 
-      secondary={true} 
-      style={style.button} 
-      onTouchTap={e => this.handleSearch(e)}
-      />
+       <DropDownMenu
+          value={this.state.value}
+          onChange={this.handleChange}
+          style={style.customWidth}
+          autoWidth={false}
+        >
+          <MenuItem value={1} primaryText="Search by Title" />
+          <MenuItem value={2} primaryText="Search by Genre" />
+          <MenuItem value={3} primaryText="Search by Year" />
+          <MenuItem value={4} primaryText="Search by Ratings" />
+          <MenuItem value={5} primaryText="Actors" />
+        </DropDownMenu>
     </div>
   );}
 }

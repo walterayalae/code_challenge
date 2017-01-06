@@ -46,6 +46,10 @@ this.setState({
 
 }
 
+handleSearch (searchTerm) {
+
+
+}
 
 render() {
  
@@ -74,7 +78,9 @@ const muiTheme = getMuiTheme(defaultTheme);
  return (
       <div>
       <MuiThemeProvider muiTheme={muiTheme}>
-        <SearchBar />
+        <SearchBar
+        handleSearch= {e => this.handleSearch(e)}
+        />
       </MuiThemeProvider>
       <MuiThemeProvider muiTheme={muiTheme}>
         <AddMovie
