@@ -3,8 +3,15 @@
   "version": "1.0.0",
   "description": "\"home movie collection\"",
   "main": "index.js",
+  "babel": {
+    "presets": [
+      "es2015",
+      "react"
+    ]
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "nodemon server/ --ignore client/",
+    "build": "browserify -t [ babelify --presets [ react ] ] client/app.js -o client/public/app-bundle.js"
   },
   "repository": {
     "type": "git",
@@ -33,7 +40,8 @@
     "path": "^0.12.7",
     "react": "^15.4.1",
     "react-dom": "^15.4.1",
-    "react-tap-event-plugin": "^2.0.1"
+    "react-tap-event-plugin": "^2.0.1",
+    "uuid": "^3.0.1"
   },
   "devDependencies": {
     "eslint": "^3.12.2",
