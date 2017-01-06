@@ -42,6 +42,7 @@ var list = this.props.data.map(function(pic, i) {
       onTouchTap= {e => {
             e.preventDefault();
             that.props.delete(pic.id);
+                 
           }}
       />
 

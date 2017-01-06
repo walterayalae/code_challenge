@@ -38,9 +38,12 @@ handleDelete(id){
 
 }
 
-handleAdd(e){
-console.log(e)
-
+addMovie(newMovie){
+this.state.movies.push(newMovie)
+this.setState({
+  movies:this.state.movies
+})
+ 
 }
 
 
@@ -68,7 +71,6 @@ render() {
 const muiTheme = getMuiTheme(defaultTheme);
 
 
-
  return (
       <div>
       <MuiThemeProvider muiTheme={muiTheme}>
@@ -76,7 +78,7 @@ const muiTheme = getMuiTheme(defaultTheme);
       </MuiThemeProvider>
       <MuiThemeProvider muiTheme={muiTheme}>
         <AddMovie
-        add= {e => this.handleAdd(e)}
+         addMovie= {e => this.addMovie(e)}
          />
       </MuiThemeProvider>
       <MuiThemeProvider muiTheme={muiTheme}>
