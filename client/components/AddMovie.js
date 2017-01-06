@@ -4,7 +4,7 @@ import FlatButton from 'material-ui/FlatButton';
 import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
 
-export default class Main extends React.Component {
+export default class AddMovie extends React.Component {
 
 constructor(props){
  super(props);
@@ -32,7 +32,7 @@ constructor(props){
         label="Submit"
         primary={true}
         disabled={false}
-        onTouchTap={e => this.handleClose(e)}
+        onTouchTap={this.props.add}
       />,
     ];
 

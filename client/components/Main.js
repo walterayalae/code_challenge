@@ -1,8 +1,8 @@
 import React from 'react';
-import MovieList from './AddMovie';
+import AddMovie from './AddMovie';
 import Movies from './Movies';
 import SearchBar from './SearchBar';
-import uuid from 'uuid';
+import uuid from 'node-uuid';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import {
@@ -23,9 +23,26 @@ export default class Main extends React.Component {
   constructor(props){
   super(props);
       this.state = {
-        movies: [{'id': 3,'Title': 'Back to the Future', 'Genre': 'Comedy', 'Year': '1985', 'Rating': 5, 'Actors':['Marty Mcfly', 'Doc']},{'id': 3,'Title': 'Mighty Ducks', 'Genre': 'Comedy', 'Year': '1998', 'Rating': 5, 'Actors':['Emilio Estevez', 'Sylvester Stallone']}, {'id': 3, 'Title': 'Fight Club', 'Genre': 'Drama', 'Year': '2000', 'Rating': 5, 'Actors':['Brad Pitt', 'Sylvester Stallone']}]
+        movies: [{id: uuid.v4(), Title: 'Back to the Future', Genre: 'Comedy', Year: '1985', Rating: 5, Actors:['Marty Mcfly', 'Doc']}, {id: uuid.v4(), Title: 'Back to the Future', Genre: 'Comedy', Year: '1985', Rating: 5, Actors:['Marty Mcfly', 'Doc']},{id: uuid.v4(),Title: 'Mighty Ducks', Genre: 'Comedy', Year: '1998', Rating: 5, Actors:['Emilio Estevez', 'Sylvester Stallone']}, {id: uuid.v4(), Title: 'Fight Club', Genre: 'Drama', Year: '2000', Rating: 5, Actors:['Brad Pitt', 'Sylvester Stallone']}]
     };
   }
+
+handleDelete(id){
+
+   var newMovieArray = this.state.movies.filter(function(pic){
+                  return  pic.id !== id;
+                    });
+   this.setState({
+       movies: newMovieArray
+   });
+
+}
+
+handleAdd(e){
+console.log(e)
+
+}
+
 
 render() {
    
@@ -58,11 +75,14 @@ const muiTheme = getMuiTheme(defaultTheme);
         <SearchBar />
       </MuiThemeProvider>
       <MuiThemeProvider muiTheme={muiTheme}>
-        <MovieList />
+        <AddMovie
+        add= {e => this.handleAdd(e)}
+         />
       </MuiThemeProvider>
       <MuiThemeProvider muiTheme={muiTheme}>
         <Movies
          data= {this.state.movies}
+         delete= {e => this.handleDelete(e)}
         />
       </MuiThemeProvider>
       </div>
