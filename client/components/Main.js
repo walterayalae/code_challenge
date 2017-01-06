@@ -29,7 +29,7 @@ export default class Main extends React.Component {
 
 handleDelete(id){
 
-   var newMovieArray = this.state.movies.filter(function(pic){
+   const newMovieArray = this.state.movies.filter(function(pic){
                   return  pic.id !== id;
                     });
    this.setState({
@@ -39,31 +39,31 @@ handleDelete(id){
 }
 
 addMovie(newMovie){
-this.state.movies.push(newMovie)
+this.state.movies.push(newMovie);
 this.setState({
   movies:this.state.movies
-})
- 
+});
+
 }
 
 
 render() {
-   
+ 
   const defaultTheme = {
 
   palette: {
    
     primary1Color: blue500,
     primary2Color: red200,
-    primary3Color: lightBlack,
+    primary3Color: white,
     accent1Color: blue700,
     accent2Color: blueGrey100,
     accent3Color: blueGrey500,
-    textColor: darkBlack,
-    alternateTextColor: white,
-    canvasColor: white,
+    textColor: white,
+    alternateTextColor: lightBlack,
+    canvasColor: lightBlack,
     borderColor: grey300,
-    disabledColor: fade( darkBlack, 0.3 ),
+    disabledColor: fade( white ),
     pickerHeaderColor: blue500,
   }
 };
@@ -89,13 +89,6 @@ const muiTheme = getMuiTheme(defaultTheme);
       </MuiThemeProvider>
       </div>
     );
+
   }
 }
-
-
-
-
-
-
-
-

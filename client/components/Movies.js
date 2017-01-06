@@ -20,8 +20,8 @@ const style = {
   display: 'inline-block',
   border: 'solid'
 };
-var that = this;
-var list = this.props.data.map(function(pic, i) {
+const that = this;
+const list = this.props.data.map(function(pic, i) {
  
   return (
      <div key={i} style={style}>
@@ -38,11 +38,11 @@ var list = this.props.data.map(function(pic, i) {
       />
       <FlatButton
       label="Delete"
-      secondary={true}
+      primary={true}
       onTouchTap= {e => {
             e.preventDefault();
             that.props.delete(pic.id);
-                 
+
           }}
       />
 
