@@ -3,8 +3,7 @@ import TextField from 'material-ui/TextField';
 import DropDownMenu from 'material-ui/DropDownMenu';
 import MenuItem from 'material-ui/MenuItem';
 import RaisedButton from 'material-ui/RaisedButton';
-
-
+import Movies from './Movies';
 
 
 export default class SearchBar extends React.Component {
@@ -13,7 +12,7 @@ constructor(props){
  super(props);
  this.state= {
     searchValue:'',
-    value: 'Title'
+    value: 'All Movies'
   };
 this.handleChange= this.handleChange.bind(this);
 this.handleSearch= this.handleSearch.bind(this);
@@ -33,9 +32,10 @@ handleSearch () {
 
   const searchVal = this.state.searchValue;
   const searchBy = this.state.value;
+  const arr = [searchVal, searchBy];
 
-  this.props.searchVal(searchVal);
-  this.props.searchBy = searchBy;
+  this.props.searchParams(arr);
+  
 
 }
 
@@ -65,9 +65,7 @@ render () {
         paddingLeft: 0,
         paddingRight: 10,
         paddingTop: 0,
-        paddingBottom: 2,
-        
-        
+        paddingBottom: 2,  
       },
     customWidth: {
       width: 190,  
@@ -79,6 +77,7 @@ render () {
   };
 
  return (
+    <div>
     <div style={style.searchBar}>
     <DropDownMenu
           value={this.state.value}
@@ -86,6 +85,7 @@ render () {
           style={style.customWidth}
           autoWidth={false}
         >
+          <MenuItem value={'All Movies'} primaryText="Search by" />
           <MenuItem value={'Title'} primaryText="Search by Title" />
           <MenuItem value={'Genre'} primaryText="Search by Genre" />
           <MenuItem value={'Year'} primaryText="Search by Year" />
@@ -103,7 +103,18 @@ render () {
      style={style.button} 
      onTouchTap={this.handleSearch}
      />
-       
+    </div>
+    
+    { this.props.date === ''
+     ? <Movies 
+    data= {this.props.data}
+    delete= {this.props.delete}
+    />
+    : <Movies 
+       data= {this.props.date}
+       delete= {this.props.delete}
+       />
+    }
     </div>
   );}
 }

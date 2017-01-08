@@ -23,10 +23,15 @@ export default class Main extends React.Component {
   constructor(props){
   super(props);
       this.state = {
-        movies: [{id: uuid.v4(), Title: 'Back to the Future', Genre: 'Comedy', Year: '1985', Rating: 5, Actors:['Marty Mcfly', 'Doc']}, {id: uuid.v4(), Title: 'Back to the Future', Genre: 'Comedy', Year: '1985', Rating: 5, Actors:['Marty Mcfly', 'Doc']},{id: uuid.v4(),Title: 'Mighty Ducks', Genre: 'Comedy', Year: '1998', Rating: 5, Actors:['Emilio Estevez', 'Sylvester Stallone']}, {id: uuid.v4(), Title: 'Fight Club', Genre: 'Drama', Year: '2000', Rating: 5, Actors:['Brad Pitt', 'Sylvester Stallone']}],
+        movies: [{id: uuid.v4(), 'Title': 'Back to the Future', 'Genre': 'Comedy', 'Year': '1985', 'Rating': '5', 'Actors':'Marty Mcfly,Doc'}, {'id': uuid.v4(), 'Title': 'Back to the Future', 'Genre': 'Comedy', 'Year': '1985', 'Rating': '5', 'Actors':'Marty Mcfly, Doc'},{'id': uuid.v4(),'Title': 'Mighty Ducks', 'Genre': 'Comedy', 'Year': '1998', 'Rating': '5', 'Actors':'Emilio Estevez,Sylvester Stallone'}, {'id': uuid.v4(), 'Title': 'Fight Club', 'Genre': 'Drama', 'Year': '2000', 'Rating': '5', 'Actors':'Brad Pitt,Sylvester Stallone'}],
+        searchMovies: ''
   
     };
   }
+
+//**********
+//Function to handle delete movie by id
+//**********
 
 handleDelete(id){
 
@@ -39,6 +44,11 @@ handleDelete(id){
 
 }
 
+
+//**********
+//Function to add movie to state, arguments coming from AddMovie component
+//**********
+
 addMovie(newMovie){
 this.state.movies.push(newMovie);
 this.setState({
@@ -47,20 +57,35 @@ this.setState({
 
 }
 
-//NOT working functions
-handleSearch(val){
-console.log(this.state.searchParam)
+//*******
+//Function to handle search by key values, params is an array.
+//*******
 
-}
+handleSearch(params){
 
-searchBy (e) {
-  this.setState({
-    searchParam: e
+//Setting values coming from SearchBar component to variables
+const searchVal = params[0].toLowerCase();
+const searchBy= params[1];
+
+//Function giving searchbar functionality
+const movieSearch =this.state.movies.filter(function(pic){
+
+    if(pic[searchBy].toLowerCase().includes(searchVal)){
+          return pic;
+
+    }
+
   });
+
+this.setState({
+  searchMovies: movieSearch
+});
+
 }
-//NOT Working
+
 render() {
  
+//Application theme for material-UI
   const defaultTheme = {
 
   palette: {
@@ -80,6 +105,7 @@ render() {
   }
 };
 
+//Function required by material-UI to apply theme to app
 const muiTheme = getMuiTheme(defaultTheme);
 
 
@@ -87,20 +113,16 @@ const muiTheme = getMuiTheme(defaultTheme);
       <div>
       <MuiThemeProvider muiTheme={muiTheme}>
         <SearchBar
-        searchVal={e => this.handleSearch(e)}
-        searchBy={e => this.searchBy(e)}
+        searchParams={e => this.handleSearch(e)}
+        data= {this.state.movies}
+        delete= {e => this.handleDelete(e)}
+        date= {this.state.searchMovies}
         />
       </MuiThemeProvider>
       <MuiThemeProvider muiTheme={muiTheme}>
         <AddMovie
          addMovie= {e => this.addMovie(e)}
          />
-      </MuiThemeProvider>
-      <MuiThemeProvider muiTheme={muiTheme}>
-        <Movies
-         data= {this.state.movies}
-         delete= {e => this.handleDelete(e)}
-        />
       </MuiThemeProvider>
       </div>
     );
