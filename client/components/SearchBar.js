@@ -21,7 +21,7 @@ this.handleSearch= this.handleSearch.bind(this);
 }
 
 handleSearchValue (e) {
-  
+
   this.setState({
     searchValue: e.currentTarget.value
   });
@@ -31,8 +31,10 @@ handleSearchValue (e) {
 //Search not working yet, find a way ro pass props to main component
 handleSearch () {
 
-  if(this.state.value === 'Search by'){
+  if (this.state.value === 'Search by') {
+
     alert('Please select Search by option');
+
   } else {
 
   const searchVal = this.state.searchValue;
@@ -44,11 +46,11 @@ handleSearch () {
    }
 }
 
-handleChange(event, index, value){
+handleChange (event, index, value) {
 
 this.setState({
   value
-})
+});
 
 }
 
@@ -70,14 +72,14 @@ render () {
         paddingLeft: 0,
         paddingRight: 10,
         paddingTop: 0,
-        paddingBottom: 2,  
+        paddingBottom: 2
       },
-    customWidth: {
-      width: 190,  
-  },
-  button: {
-     margin: 12,
-  }
+     customWidth: {
+      width: 190
+      },
+     button: {
+      margin: 12
+      }
 
   };
 
@@ -102,29 +104,29 @@ render () {
       style={{width: '78%', marginRight: '2%' }}
       onChange={e => this.handleSearchValue(e)}
     />
-     <RaisedButton 
-     label="Search" 
-     primary={true} 
-     style={style.button} 
+     <RaisedButton
+     label="Search"
+     primary={true}
+     style={style.button}
      onTouchTap={this.handleSearch}
      />
     </div>
-    <AddMovie 
+    <AddMovie
      addMovie={this.props.addMovie}
-     
+
      />
-     <RaisedButton 
-      label="Show All Movies" 
-      primary={true} 
-      style={style} 
+     <RaisedButton
+      label="Show All Movies"
+      primary={true}
+      style={style}
       onTouchTap={this.props.showAllMovies}
       />
-    { this.props.filter === ''
-     ? <Movies 
+    { this.props.filter === '' ?
+     <Movies
     data= {this.props.data}
     delete= {this.props.delete}
     />
-    : <Movies 
+    : <Movies
        data= {this.props.filter}
        delete= {this.props.delete}
        />

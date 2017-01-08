@@ -7,7 +7,8 @@ import uuid from 'node-uuid';
 
 export default class AddMovie extends React.Component {
 
-constructor(props){
+constructor (props) {
+
  super(props);
   this.state = {
     open: false,
@@ -15,7 +16,7 @@ constructor(props){
     newGenre: '',
     newYear: '',
     newActors: '',
-    newRating: '',
+    newRating: ''
 
   };
 
@@ -92,7 +93,8 @@ constructor(props){
 
   }
 
-  render() {
+  render () {
+
    const actions = [
       <FlatButton
         label="Cancel"
@@ -104,14 +106,14 @@ constructor(props){
         primary={true}
         disabled={false}
         onTouchTap={e => this.handleSubmit(e)}
-      />,
+      />
     ];
 
     return (
       <div>
-        <RaisedButton 
-        label="Add Movie" 
-        onTouchTap={e => this.handleOpen(e)} 
+        <RaisedButton
+        label="Add Movie"
+        onTouchTap={e => this.handleOpen(e)}
         />
         <Dialog
           title="Add Movie to my collection"
@@ -152,5 +154,7 @@ constructor(props){
         </Dialog>
       </div>
     );
+
   }
+
 }

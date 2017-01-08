@@ -25,19 +25,20 @@ export default class Main extends React.Component {
       this.state = {
         movies: [{id: uuid.v4(), 'Title': 'Back to the Future', 'Genre': 'Comedy', 'Year': '1985', 'Rating': '5', 'Actors':'Marty Mcfly,Doc'}, {'id': uuid.v4(), 'Title': 'Back to the Future', 'Genre': 'Comedy', 'Year': '1985', 'Rating': '5', 'Actors':'Marty Mcfly, Doc'},{'id': uuid.v4(),'Title': 'Mighty Ducks', 'Genre': 'Comedy', 'Year': '1998', 'Rating': '5', 'Actors':'Emilio Estevez,Sylvester Stallone'}, {'id': uuid.v4(), 'Title': 'Fight Club', 'Genre': 'Drama', 'Year': '2000', 'Rating': '5', 'Actors':'Brad Pitt,Sylvester Stallone'}],
         searchMovies: '',
-        
-  
     };
+
   }
 
 //**********
 //Function to handle delete movie by id
 //**********
 
-handleDelete(id){
-  
-   const newMovieArray = this.state.movies.filter(function(pic){
-                  return  pic.id !== id;
+handleDelete (id) {
+
+   const newMovieArray = this.state.movies.filter(function (pic) {
+
+                  return pic.id !== id;
+
                     });
    this.setState({
        movies: newMovieArray,
@@ -51,7 +52,7 @@ handleDelete(id){
 //Function to add movie to state, arguments coming from AddMovie component
 //**********
 
-addMovie(newMovie){
+addMovie (newMovie) {
 
 this.state.movies.push(newMovie);
 this.setState({
@@ -65,16 +66,17 @@ this.setState({
 //Function to handle search by key values, params is an array.
 //*******
 
-handleSearch(params){
+handleSearch (params) {
 
 //Setting values coming from SearchBar component to variables
 const searchVal = params[0].toLowerCase();
 const searchBy= params[1];
 
 //Function giving searchbar functionality
-const movieSearch =this.state.movies.filter(function(pic){
+const movieSearch =this.state.movies.filter(function (pic) {
 
-    if(pic[searchBy].toLowerCase().includes(searchVal)){
+    if (pic[searchBy].toLowerCase().includes(searchVal)) {
+
           return pic;
 
     }
@@ -87,8 +89,10 @@ this.setState({
 
 }
 
+//Show all movies button functionality in SearchBar component.
 showAllMovies () {
 
+//Changing state to render Movies component
  this.setState({
   searchMovies: ''
  });
@@ -120,7 +124,7 @@ render() {
 //Function required by material-UI to apply theme to app
 const muiTheme = getMuiTheme(defaultTheme);
 
-
+//'e' used for any type of event, arrow function used for binding
  return (
       <div>
       <MuiThemeProvider muiTheme={muiTheme}>
@@ -131,7 +135,6 @@ const muiTheme = getMuiTheme(defaultTheme);
         filter= {this.state.searchMovies}
         addMovie= {e => this.addMovie(e)}
         showAllMovies= {e => this.showAllMovies(e)}
-      
         />
       </MuiThemeProvider>
       </div>
