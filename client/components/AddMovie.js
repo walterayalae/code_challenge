@@ -16,7 +16,6 @@ constructor(props){
     newYear: '',
     newActors: '',
     newRating: '',
-    id: uuid.v4()
 
   };
 
@@ -41,7 +40,7 @@ constructor(props){
     });
 
     const newMovie = Object.assign({}, {
-    id: this.state.id,
+    id: uuid.v4(),
     Title: this.state.newTitle,
     Genre: this.state.newGenre,
     Year: this.state.newYear,
@@ -97,7 +96,7 @@ constructor(props){
    const actions = [
       <FlatButton
         label="Cancel"
-           primary={true}
+        primary={true}
         onTouchTap={e => this.handleClose(e)}
       />,
       <FlatButton

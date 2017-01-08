@@ -4,6 +4,7 @@ import DropDownMenu from 'material-ui/DropDownMenu';
 import MenuItem from 'material-ui/MenuItem';
 import RaisedButton from 'material-ui/RaisedButton';
 import Movies from './Movies';
+import AddMovie from './AddMovie';
 
 
 export default class SearchBar extends React.Component {
@@ -12,7 +13,7 @@ constructor(props){
  super(props);
  this.state= {
     searchValue:'',
-    value: 'All Movies'
+    value: 'Search by'
   };
 this.handleChange= this.handleChange.bind(this);
 this.handleSearch= this.handleSearch.bind(this);
@@ -20,7 +21,7 @@ this.handleSearch= this.handleSearch.bind(this);
 }
 
 handleSearchValue (e) {
-
+  
   this.setState({
     searchValue: e.currentTarget.value
   });
@@ -30,13 +31,17 @@ handleSearchValue (e) {
 //Search not working yet, find a way ro pass props to main component
 handleSearch () {
 
+  if(this.state.value === 'Search by'){
+    alert('Please select Search by option');
+  } else {
+
   const searchVal = this.state.searchValue;
   const searchBy = this.state.value;
   const arr = [searchVal, searchBy];
 
   this.props.searchParams(arr);
-  
 
+   }
 }
 
 handleChange(event, index, value){
@@ -85,7 +90,7 @@ render () {
           style={style.customWidth}
           autoWidth={false}
         >
-          <MenuItem value={'All Movies'} primaryText="Search by" />
+          <MenuItem value={'Search by'} primaryText="Search by" />
           <MenuItem value={'Title'} primaryText="Search by Title" />
           <MenuItem value={'Genre'} primaryText="Search by Genre" />
           <MenuItem value={'Year'} primaryText="Search by Year" />
@@ -104,14 +109,23 @@ render () {
      onTouchTap={this.handleSearch}
      />
     </div>
-    
-    { this.props.date === ''
+    <AddMovie 
+     addMovie={this.props.addMovie}
+     
+     />
+     <RaisedButton 
+      label="Show All Movies" 
+      primary={true} 
+      style={style} 
+      onTouchTap={this.props.showAllMovies}
+      />
+    { this.props.filter === ''
      ? <Movies 
     data= {this.props.data}
     delete= {this.props.delete}
     />
     : <Movies 
-       data= {this.props.date}
+       data= {this.props.filter}
        delete= {this.props.delete}
        />
     }

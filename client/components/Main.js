@@ -24,7 +24,8 @@ export default class Main extends React.Component {
   super(props);
       this.state = {
         movies: [{id: uuid.v4(), 'Title': 'Back to the Future', 'Genre': 'Comedy', 'Year': '1985', 'Rating': '5', 'Actors':'Marty Mcfly,Doc'}, {'id': uuid.v4(), 'Title': 'Back to the Future', 'Genre': 'Comedy', 'Year': '1985', 'Rating': '5', 'Actors':'Marty Mcfly, Doc'},{'id': uuid.v4(),'Title': 'Mighty Ducks', 'Genre': 'Comedy', 'Year': '1998', 'Rating': '5', 'Actors':'Emilio Estevez,Sylvester Stallone'}, {'id': uuid.v4(), 'Title': 'Fight Club', 'Genre': 'Drama', 'Year': '2000', 'Rating': '5', 'Actors':'Brad Pitt,Sylvester Stallone'}],
-        searchMovies: ''
+        searchMovies: '',
+        
   
     };
   }
@@ -34,12 +35,13 @@ export default class Main extends React.Component {
 //**********
 
 handleDelete(id){
-
+  
    const newMovieArray = this.state.movies.filter(function(pic){
                   return  pic.id !== id;
                     });
    this.setState({
-       movies: newMovieArray
+       movies: newMovieArray,
+       searchMovies: ''
    });
 
 }
@@ -50,9 +52,11 @@ handleDelete(id){
 //**********
 
 addMovie(newMovie){
+
 this.state.movies.push(newMovie);
 this.setState({
-  movies:this.state.movies
+  movies:this.state.movies,
+  searchMovies:''
 });
 
 }
@@ -80,6 +84,14 @@ const movieSearch =this.state.movies.filter(function(pic){
 this.setState({
   searchMovies: movieSearch
 });
+
+}
+
+showAllMovies () {
+
+ this.setState({
+  searchMovies: ''
+ });
 
 }
 
@@ -116,13 +128,11 @@ const muiTheme = getMuiTheme(defaultTheme);
         searchParams={e => this.handleSearch(e)}
         data= {this.state.movies}
         delete= {e => this.handleDelete(e)}
-        date= {this.state.searchMovies}
+        filter= {this.state.searchMovies}
+        addMovie= {e => this.addMovie(e)}
+        showAllMovies= {e => this.showAllMovies(e)}
+      
         />
-      </MuiThemeProvider>
-      <MuiThemeProvider muiTheme={muiTheme}>
-        <AddMovie
-         addMovie= {e => this.addMovie(e)}
-         />
       </MuiThemeProvider>
       </div>
     );
