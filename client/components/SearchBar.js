@@ -111,16 +111,15 @@ render () {
      onTouchTap={this.handleSearch}
      />
     </div>
-    <AddMovie
-     addMovie={this.props.addMovie}
-
-     />
      <RaisedButton
       label="Show All Movies"
       primary={true}
       style={style}
       onTouchTap={this.props.showAllMovies}
       />
+      <AddMovie
+     addMovie={this.props.addMovie}
+     />
     { this.props.filter === '' ?
      <Movies
     data= {this.props.data}

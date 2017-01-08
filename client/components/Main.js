@@ -23,11 +23,40 @@ export default class Main extends React.Component {
   constructor(props){
   super(props);
       this.state = {
-        movies: [{id: uuid.v4(), 'Title': 'Back to the Future', 'Genre': 'Comedy', 'Year': '1985', 'Rating': '5', 'Actors':'Marty Mcfly,Doc'}, {'id': uuid.v4(), 'Title': 'Back to the Future', 'Genre': 'Comedy', 'Year': '1985', 'Rating': '5', 'Actors':'Marty Mcfly, Doc'},{'id': uuid.v4(),'Title': 'Mighty Ducks', 'Genre': 'Comedy', 'Year': '1998', 'Rating': '5', 'Actors':'Emilio Estevez,Sylvester Stallone'}, {'id': uuid.v4(), 'Title': 'Fight Club', 'Genre': 'Drama', 'Year': '2000', 'Rating': '5', 'Actors':'Brad Pitt,Sylvester Stallone'}],
-        searchMovies: '',
+        movies: [],
+        searchMovies: ''
     };
 
   }
+
+//NOT WORKING STILL IN DEVELOPMENT
+componentWillMount () {
+
+  const movies = localStorage.movies;
+
+  if (movies) {
+
+    this.setState({
+
+      movies: JSON.parse(movies)
+
+    });
+
+  }
+
+}
+
+componentDidUpdate (prevProps, prevState) {
+
+  if (JSON.stringify(prevState.movies) !== JSON.stringify(this.state.movies)) {
+
+    localStorage.movies = JSON.stringify(this.state.movies);
+
+  }
+
+
+}
+//STILL IN DEVELOPMENT^^^^^^^^^^^
 
 //**********
 //Function to handle delete movie by id
