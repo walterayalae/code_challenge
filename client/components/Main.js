@@ -29,7 +29,7 @@ export default class Main extends React.Component {
 
   }
 
-//NOT WORKING STILL IN DEVELOPMENT
+
 componentWillMount () {
 
   const movies = localStorage.movies;
@@ -48,15 +48,11 @@ componentWillMount () {
 
 componentDidUpdate (prevProps, prevState) {
 
-  if (JSON.stringify(prevState.movies) !== JSON.stringify(this.state.movies)) {
-
-    localStorage.movies = JSON.stringify(this.state.movies);
-
-  }
-
+   const movies = JSON.stringify(this.state.movies);
+    localStorage.setItem('movies', movies);
 
 }
-//STILL IN DEVELOPMENT^^^^^^^^^^^
+
 
 //**********
 //Function to handle delete movie by id
