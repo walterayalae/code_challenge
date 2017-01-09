@@ -40,6 +40,7 @@ const list = this.props.data.map(function(pic, i) {
         Year={pic.Year}
         Actors={pic.Actors}
         Rating={pic.Rating}
+        search={that.props.search}
       />
       <FlatButton
       label="Delete"

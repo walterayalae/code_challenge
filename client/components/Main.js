@@ -194,11 +194,11 @@ const muiTheme = getMuiTheme(defaultTheme);
           data= {this.state.movies}
           delete= {e => this.handleDelete(e)}
           updateMovie={e => this.updateMovie(e)}
+          search={this.state.searchMovies}
         />
     :   <Movies
           data= {this.state.searchMovies}
           delete= {e => this.handleDelete(e)}
-          
         />
     }
     </MuiThemeProvider>

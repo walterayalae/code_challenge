@@ -112,11 +112,21 @@ constructor (props) {
 
     return (
       <div>
+      {this.props.search !== '' ?
         <FlatButton
           label="Update"
           primary={true}
           onTouchTap={e => this.handleOpen(e)}
+          disabled={true}
       />
+      :
+       <FlatButton
+          label="Update"
+          primary={true}
+          onTouchTap={e => this.handleOpen(e)}
+          disabled={false}
+      />
+    }
         <Dialog
           title="Update Movie"
           actions={actions}
