@@ -20,6 +20,7 @@ this.handleSearch= this.handleSearch.bind(this);
 
 }
 
+//Function handling user input in Searchbar and setting input to state
 handleSearchValue (e) {
 
   this.setState({
@@ -28,7 +29,8 @@ handleSearchValue (e) {
 
 }
 
-//Search not working yet, find a way ro pass props to main component
+//Function handling search button and sending props to Main component
+//where is rendered
 handleSearch () {
 
   if (this.state.value === 'Search by') {
@@ -46,6 +48,7 @@ handleSearch () {
    }
 }
 
+//Function dealing with drop down menu in search bar
 handleChange (event, index, value) {
 
 this.setState({
@@ -118,18 +121,8 @@ render () {
       onTouchTap={this.props.showAllMovies}
       />
       <AddMovie
-     addMovie={this.props.addMovie}
+       addMovie={this.props.addMovie}
      />
-    { this.props.filter === '' ?
-     <Movies
-    data= {this.props.data}
-    delete= {this.props.delete}
-    />
-    : <Movies
-       data= {this.props.filter}
-       delete= {this.props.delete}
-       />
-    }
     </div>
   );}
 }

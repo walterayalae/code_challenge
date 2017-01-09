@@ -29,7 +29,9 @@ export default class Main extends React.Component {
 
   }
 
-
+//ComponentDidUpdate is ran first setting local storage
+//ComponentWillMount set state with saved data in localStorage
+//Using JSON.parse to make item readable
 componentWillMount () {
 
   const movies = localStorage.movies;
@@ -46,6 +48,8 @@ componentWillMount () {
 
 }
 
+//Setting local storage, using JSON.stringify to represent object data
+//setting item movies equal to state
 componentDidUpdate (prevProps, prevState) {
 
    const movies = JSON.stringify(this.state.movies);
@@ -75,6 +79,7 @@ handleDelete (id) {
 
 //**********
 //Function to add movie to state, arguments coming from AddMovie component
+//setting searchMovies state as well to render movie list
 //**********
 
 addMovie (newMovie) {
@@ -155,13 +160,22 @@ const muiTheme = getMuiTheme(defaultTheme);
       <MuiThemeProvider muiTheme={muiTheme}>
         <SearchBar
         searchParams={e => this.handleSearch(e)}
-        data= {this.state.movies}
-        delete= {e => this.handleDelete(e)}
-        filter= {this.state.searchMovies}
         addMovie= {e => this.addMovie(e)}
         showAllMovies= {e => this.showAllMovies(e)}
         />
       </MuiThemeProvider>
+       <MuiThemeProvider muiTheme={muiTheme}>
+      { this.state.searchMovies === '' ?
+        <Movies
+          data= {this.state.movies}
+          delete= {e => this.handleDelete(e)}
+        />
+    :   <Movies
+          data= {this.state.searchMovies}
+          delete= {e => this.handleDelete(e)}
+        />
+    }
+    </MuiThemeProvider>
       </div>
     );
 

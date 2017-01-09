@@ -1,5 +1,6 @@
 import React from 'react';
 import FlatButton from 'material-ui/FlatButton';
+import UpdateMovie from './UpdateMovie';
 
 
 export default class Movies extends React.Component {
@@ -13,7 +14,7 @@ export default class Movies extends React.Component {
 render () {
 
 const style = {
-  height: 320,
+  height: 360,
   width: 320,
   margin: 100,
   textAlign: 'center',
@@ -31,10 +32,9 @@ const list = this.props.data.map(function(pic, i) {
       <h3>Rating: {pic.Rating}</h3>
       <h3>Actors:</h3>
       <h3>{pic.Actors.toString()}</h3>
-      <FlatButton
-      label="Update"
-      primary={true}
-      onTouchTap={that.props.update}
+      <UpdateMovie 
+        updateMovie={that.props.updateMovie}
+        id={that.props.id}
       />
       <FlatButton
       label="Delete"
