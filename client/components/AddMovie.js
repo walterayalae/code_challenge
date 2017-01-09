@@ -1,6 +1,6 @@
 //*****************
 //
-//Adds movie to list with properties, handles local state with object properties.
+//Adds movie to list, handles local state with object properties.
 //
 //*****************
 import React from 'react';

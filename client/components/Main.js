@@ -4,7 +4,6 @@
 //Also manages global color theme
 //
 //*****************
-
 import React from 'react';
 import AddMovie from './AddMovie';
 import Movies from './Movies';
