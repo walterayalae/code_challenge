@@ -24,7 +24,10 @@ const style = {
   margin: 90,
   textAlign: 'center',
   display: 'inline-block',
-  border: 'solid'
+  border: 'solid',
+  borderRadius: '5px',
+  borderStyle: 'groove',
+  borderWidth: '7px'
 };
 
 const that = this;

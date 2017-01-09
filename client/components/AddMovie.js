@@ -160,7 +160,7 @@ constructor (props) {
       onChange={e => this.handleYearAdd(e)}
     /><br />
     <TextField
-      hintText="Rating"
+      hintText="1 - 5"
       floatingLabelText="Rating"
       floatingLabelFixed={true}
       onChange={e => this.handleRatingAdd(e)}
