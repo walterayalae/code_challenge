@@ -10,7 +10,7 @@ export default class AddMovie extends React.Component {
 constructor (props) {
 
  super(props);
- console.log(this.props)
+
   this.state = {
     open: false,
       Title: this.props.Title,

@@ -130,7 +130,27 @@ showAllMovies () {
 }
 
 updateMovie (updatedMovie) {
-console.log('update', updatedMovie)
+
+this.state.movies.filter(function(pic){
+
+  if(updatedMovie.id === pic.id){
+
+    Object.assign(pic, updatedMovie);
+
+  }
+
+});
+
+const updated = this.state.movies;
+
+this.setState({
+
+  movies: updated
+
+})
+
+
+
 }
 
 render() {
@@ -178,6 +198,7 @@ const muiTheme = getMuiTheme(defaultTheme);
     :   <Movies
           data= {this.state.searchMovies}
           delete= {e => this.handleDelete(e)}
+          
         />
     }
     </MuiThemeProvider>
