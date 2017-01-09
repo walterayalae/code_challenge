@@ -129,6 +129,10 @@ showAllMovies () {
 
 }
 
+updateMovie (updatedMovie) {
+console.log('update', updatedMovie)
+}
+
 render() {
  
 //Application theme for material-UI
@@ -169,6 +173,7 @@ const muiTheme = getMuiTheme(defaultTheme);
         <Movies
           data= {this.state.movies}
           delete= {e => this.handleDelete(e)}
+          updateMovie={e => this.updateMovie(e)}
         />
     :   <Movies
           data= {this.state.searchMovies}

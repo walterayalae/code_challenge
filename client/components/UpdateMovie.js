@@ -118,7 +118,7 @@ constructor (props) {
           onTouchTap={e => this.handleOpen(e)}
       />
         <Dialog
-          title="Add Movie to my collection"
+          title="Update Movie"
           actions={actions}
           modal={true}
           open={this.state.open}

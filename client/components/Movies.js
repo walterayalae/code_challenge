@@ -34,7 +34,12 @@ const list = this.props.data.map(function(pic, i) {
       <h3>{pic.Actors.toString()}</h3>
       <UpdateMovie 
         updateMovie={that.props.updateMovie}
-        id={that.props.id}
+        id={pic.id}
+        Title={pic.Title}
+        Genre={pic.Genre}
+        Year={pic.Year}
+        Actors={pic.Actors}
+        Rating={pic.Rating}
       />
       <FlatButton
       label="Delete"
