@@ -1,3 +1,8 @@
+//*****************
+//
+//Movie list, component maps items in state and renders movie list, update and delete buttons.
+//
+//*****************
 import React from 'react';
 import FlatButton from 'material-ui/FlatButton';
 import UpdateMovie from './UpdateMovie';
@@ -15,15 +20,16 @@ render () {
 
 const style = {
   height: 360,
-  width: 320,
-  margin: 100,
+  width: 310,
+  margin: 90,
   textAlign: 'center',
   display: 'inline-block',
   border: 'solid'
 };
+
 const that = this;
 const list = this.props.data.map(function(pic, i) {
- 
+
   return (
      <div key={i} style={style}>
       <h2>{pic.Title}</h2>

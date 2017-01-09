@@ -1,3 +1,8 @@
+//*****************
+//
+//Search Bar, Search & show All movies buttons. Addmovie component is passed with props.
+//
+//*****************
 import React from 'react';
 import TextField from 'material-ui/TextField';
 import DropDownMenu from 'material-ui/DropDownMenu';
@@ -60,8 +65,9 @@ this.setState({
 render () {
 
  const style = {
+
       searchBar: {
-        width: '70%',
+        width: '60%',
         flex: '50%',
         marginLeft: 'auto',
         marginRight: 'auto',
@@ -77,9 +83,11 @@ render () {
         paddingTop: 0,
         paddingBottom: 2
       },
-      customWidth: {
+
+      dropDowncustomWidth: {
         width: 190
       },
+
       showAllButton: {
         marginLeft: 50,
         
@@ -93,7 +101,7 @@ render () {
     <DropDownMenu
           value={this.state.value}
           onChange={this.handleChange}
-          style={style.customWidth}
+          style={style.dropDowncustomWidth}
           autoWidth={false}
         >
           <MenuItem value={'Search by'} primaryText="Search by" />

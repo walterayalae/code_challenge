@@ -5,7 +5,7 @@ const Path = require('path');
 const routes = express.Router();
 
 
-//Providing a browserified fil at a specific path
+//Providing a browserified file at a specific path
 routes.get('/app-bundle.js',
 	browserify('./client/app.js', {
 		transform: [[ require('babelify'), {presets:['es2015', 'react']}]]

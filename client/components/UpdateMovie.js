@@ -1,3 +1,8 @@
+//*****************
+//
+//Adds update functionality to application, it handles update button and its own state.
+//
+//*****************
 import React from 'react';
 import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';

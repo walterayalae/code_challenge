@@ -1,3 +1,8 @@
+//*****************
+//
+//Adds movie to list with properties, handles local state with object properties.
+//
+//*****************
 import React from 'react';
 import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
@@ -34,6 +39,8 @@ constructor (props) {
 
   }
 
+//On submit new object is created and sent to main component as props
+//unique id is created in this component.
   handleSubmit () {
 
     this.setState({
