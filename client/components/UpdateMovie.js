@@ -36,7 +36,17 @@ constructor (props) {
 
   handleClose () {
 
-    this.setState({open: false});
+
+    this.setState({
+
+      open: false,
+      Title: this.props.Title,
+      Genre: this.props.Genre,
+      Year: this.props.Year,
+      Actors: this.props.Actors,
+      Rating: this.props.Rating
+      
+      });
 
   }
 
@@ -119,7 +129,7 @@ constructor (props) {
       <div>
       {this.props.search !== '' ?
         <FlatButton
-          label="Update"
+          label=""
           primary={true}
           onTouchTap={e => this.handleOpen(e)}
           disabled={true}
