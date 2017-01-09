@@ -160,18 +160,12 @@ render() {
 
   palette: {
    
-    primary1Color: blue500,
-    primary2Color: blue700,
-    primary3Color: lightBlack,
-    accent1Color: purpleA200,
-    accent2Color: blueGrey100,
-    accent3Color: blueGrey500,
-    textColor: darkBlack,
-    alternateTextColor: white,
-    canvasColor: white,
-    borderColor: grey300,
-    disabledColor: fade( darkBlack, 0.3 ),
-    pickerHeaderColor: blue500,
+    primary1Color: "#e67e22",
+primary2Color: "#e67e22",
+primary3Color: "#A9D2EB",
+accent1Color: "#ED3B3B",
+accent2Color: "#ED2B2B",
+accent3Color: "#F58C8C",
   }
 };
 

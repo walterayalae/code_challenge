@@ -30,7 +30,7 @@ const list = this.props.data.map(function(pic, i) {
       <h3>Genre: {pic.Genre}</h3>
       <h3>Year: {pic.Year}</h3>
       <h3>Rating: {pic.Rating}</h3>
-      <h3>Actors:</h3>
+      <h3>Actor(s):</h3>
       <h3>{pic.Actors.toString()}</h3>
       <UpdateMovie 
         updateMovie={that.props.updateMovie}

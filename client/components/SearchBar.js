@@ -61,7 +61,7 @@ render () {
 
  const style = {
       searchBar: {
-       width: '60%',
+        width: '70%',
         flex: '50%',
         marginLeft: 'auto',
         marginRight: 'auto',
@@ -77,11 +77,12 @@ render () {
         paddingTop: 0,
         paddingBottom: 2
       },
-     customWidth: {
-      width: 190
+      customWidth: {
+        width: 190
       },
-     button: {
-      margin: 12
+      showAllButton: {
+        marginLeft: 50,
+        
       }
 
   };
@@ -104,20 +105,20 @@ render () {
         </DropDownMenu>
     <TextField
       hintText="Search Movies"
-      style={{width: '78%', marginRight: '2%' }}
+      style={{width: '60%', marginRight: '2%' }}
       onChange={e => this.handleSearchValue(e)}
     />
      <RaisedButton
      label="Search"
      primary={true}
-     style={style.button}
+     style={style}
      onTouchTap={this.handleSearch}
      />
     </div>
      <RaisedButton
       label="Show All Movies"
       primary={true}
-      style={style}
+      style={style.showAllButton}
       onTouchTap={this.props.showAllMovies}
       />
       <AddMovie

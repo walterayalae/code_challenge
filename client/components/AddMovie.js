@@ -95,6 +95,12 @@ constructor (props) {
 
   render () {
 
+  const style = {
+      showAllButton: {
+        marginLeft: 50,
+      }
+    };
+
    const actions = [
       <FlatButton
         label="Cancel"
@@ -114,6 +120,7 @@ constructor (props) {
         <RaisedButton
         label="Add Movie"
         onTouchTap={e => this.handleOpen(e)}
+        style={style.showAllButton}
         />
         <Dialog
           title="Add Movie to my collection"
